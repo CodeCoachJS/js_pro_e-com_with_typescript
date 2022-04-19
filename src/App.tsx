@@ -1,12 +1,16 @@
 import { ChangeEvent, useEffect, useState } from 'react';
-import './App.css';
+import { apiClient, HTTP_OPTIONS } from './helpers';
 import ProductCard from './components/ProductCard';
 import SearchBar from './components/SearchBar';
-interface Product {
+import './App.css';
+import ProductRating from './components/ProductRating';
+
+export interface Product {
     id: string;
     title: string;
     price: number;
     description: string;
+    category?: string;
     image: string;
     rating: {
         count: number;
@@ -25,10 +29,11 @@ const App = (): JSX.Element => {
     const fetchProducts = async (): Promise<void> => {
         try {
             setIsLoading(true);
-            const res = await window.fetch(API_URL);
-            const json = await res.json();
-            setFilteredProducts(json);
-            setProducts(json);
+            const res: Product[] = await apiClient(API_URL, {
+                method: HTTP_OPTIONS.GET,
+            });
+            setFilteredProducts(res);
+            setProducts(res);
             setIsLoading(false);
         } catch (e) {
             setIsLoading(false);
@@ -60,8 +65,12 @@ const App = (): JSX.Element => {
                 />
                 {loading && <h2>Loading Products...</h2>}
                 {filteredProducts.map((product: Product) => (
-                    <div key={product.id}>
+                    <div data-testid="productContainer" key={product.id}>
                         <ProductCard {...product} />
+                        <ProductRating
+                            rate={product.rating.rate}
+                            count={product.rating.count}
+                        />
                     </div>
                 ))}
             </header>

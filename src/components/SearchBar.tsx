@@ -9,7 +9,13 @@ const SearchBar = ({
     placeholder,
     onChangeCallBack,
 }: SearchBarProps): JSX.Element => {
-    return <input placeholder={placeholder} onChange={onChangeCallBack} />;
+    return (
+        <input
+            data-testid="searchBar"
+            placeholder={placeholder}
+            onChange={onChangeCallBack}
+        />
+    );
 };
 
 export default SearchBar;
