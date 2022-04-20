@@ -1,12 +1,6 @@
 import { currencyFormat } from '../helpers';
 
-interface ProductProps {
-    id: string;
-    title: string;
-    price: number;
-    description: string;
-    image: string;
-}
+interface ProductProps {} // FIXME -> ruh roh, we need a definition for this interface
 
 const ProductCard = ({
     id,

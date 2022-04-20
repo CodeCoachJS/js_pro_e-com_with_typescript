@@ -1,5 +1,4 @@
-export enum HTTP_OPTIONS {
-    GET = 'GET',
+export enum HTTP_OPTIONS { // FIXME -> looks like we are missing an enum here
     POST = 'POST',
     PUT = 'PUT',
     DELETE = 'DELETE',
@@ -10,7 +9,8 @@ interface FetchParams {
     data?: object;
 }
 
-const currencyFormat = (num: number): string => {
+const currencyFormat = (num) => {
+    // FIXME -> what type should `num` have and what is returned?
     return `$${num.toFixed(2)}`;
 };
 

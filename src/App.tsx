@@ -5,25 +5,12 @@ import SearchBar from './components/SearchBar';
 import './App.css';
 import ProductRating from './components/ProductRating';
 
-export interface Product {
-    id: string;
-    title: string;
-    price: number;
-    description: string;
-    category?: string;
-    image: string;
-    rating: {
-        count: number;
-        rate: number;
-    };
-}
+export interface Product {} // FIXME -> ruh roh, we need a definition for this interface
 
 const App = (): JSX.Element => {
-    const [products, setProducts] = useState<Product[] | []>([]);
-    const [filteredProducts, setFilteredProducts] = useState<Product[] | []>(
-        []
-    );
-    const [loading, setIsLoading] = useState<boolean>(false);
+    const [products, setProducts] = useState<any[] | []>([]); // FIXME -> replace `any` with the actual type expected
+    const [filteredProducts, setFilteredProducts] = useState<any[] | []>([]); // FIXME -> replace `any` with the actual type expected
+    const [loading, setIsLoading] = useState<any>(false); // FIXME -> replace `any` with the actual type expected
     const API_URL: string = 'https://fakestoreapi.com/products';
 
     const fetchProducts = async (): Promise<void> => {
@@ -32,6 +19,8 @@ const App = (): JSX.Element => {
             const res: Product[] = await apiClient(API_URL, {
                 method: HTTP_OPTIONS.GET,
             });
+            // we keep both filtered products and the entire list separately
+            // this way we can update the list and keep a full copy in case we need to reset it
             setFilteredProducts(res);
             setProducts(res);
             setIsLoading(false);
@@ -46,14 +35,8 @@ const App = (): JSX.Element => {
 
     const filterItems = (e: ChangeEvent<HTMLInputElement>): void => {
         const inputVal = e.target.value;
-        if (!inputVal.length) setFilteredProducts(products);
-        if (inputVal.length > 3) {
-            setFilteredProducts((prev) =>
-                prev.filter((item) =>
-                    item.title.toLocaleLowerCase().includes(inputVal)
-                )
-            );
-        }
+        // FIXME -> if there is no value entered then let's show the entire list
+        // if there are MORE than or EQUAL to 3 characters we will filter the list by the title property
     };
 
     return (

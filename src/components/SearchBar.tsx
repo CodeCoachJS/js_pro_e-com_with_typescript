@@ -1,8 +1,8 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent } from 'react'; // HINT: 🤔
 
 interface SearchBarProps {
     placeholder: string;
-    onChangeCallBack: (e: ChangeEvent<HTMLInputElement>) => void;
+    onChangeCallBack: any; // FIXME -> look above at that hint up there...;
 }
 
 const SearchBar = ({

@@ -50,4 +50,10 @@ If you know Javsascript, you mostly know Typescript!
 
 This is the time to dig in and explore some of the most common concepts such as `Interfaces` and `Enums` as well as how to write basic functions.
 
-**TODO**: All tests should pass!
+**TODO**:
+
+Look for any instance of `FIXME` and fix issues related to missing type definitions and some basic UI logic.
+
+You will know when things are working because... ⬇️
+
+**_All tests should pass!_**
