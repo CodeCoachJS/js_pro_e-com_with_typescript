@@ -38,6 +38,14 @@ While this is a contrived example, it illustrates one of the issues that can ari
 
 ---
 
+### Video Walkthrough 📼
+
+---
+
+https://www.loom.com/share/966293b0d0ac441f8cc5838f29feec34
+
+---
+
 ### Typescript with React
 
 ---
