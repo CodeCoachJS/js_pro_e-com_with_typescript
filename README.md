@@ -65,3 +65,5 @@ Look for any instance of `FIXME` and fix issues related to missing type definiti
 You will know when things are working because... ⬇️
 
 **_All tests should pass!_**
+
+Record a short loom video explaining what you found useful with Typescript and any difficulties you encountered. Would you use it again?
